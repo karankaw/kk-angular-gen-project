@@ -1,0 +1,21 @@
+<p-dialog header="Upload Documents" [modal]="true" [(visible)]="modalWindowVisible" [style]="{width: '470px'}"
+    [baseZIndex]="10000" [draggable]="false" [resizable]="false" (onHide)="cancel()">
+
+    <input #uploadIDTemplate="ngModel" type="text" class="p-inputtext-md upload-id-style" placeholder="Enter Upload Id*" pInputText 
+    [(ngModel)]="uploadId" style="margin-bottom: 1rem;" size="50" required/>
+
+    <p-toast position="top-right"></p-toast>
+
+    <div class="card">
+        <p-fileUpload 
+            #fileUploader name="file[]" customUpload="true"
+            (uploadHandler)="uploadFiles($event)" 
+            chooseLabel="Choose File" chooseIcon="" 
+            uploadLabel="Upload"  uploadIcon=""
+            cancelLabel="Cancel" cancelIcon="" [showCancelButton]="false"
+            (onRemove)="removeAll()" (onClear)="clearAll()"
+            accept=".zip" maxFileSize="10485760" [multiple]="false">
+        </p-fileUpload>
+    </div>
+
+</p-dialog>

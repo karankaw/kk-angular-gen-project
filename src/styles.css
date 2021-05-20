@@ -1,1 +1,56 @@
-/* Add application styles & imports to this file! */
+/* You can add global styles to this file, and also import other style files */
+
+
+  html{
+    font-size: 14px;
+    /* font-size: 2vh; */
+  }
+
+  body {  
+    margin: 10px; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+  }
+  
+  .g-sidebar {
+    grid-area: g-sidebar;
+  }
+  
+  .g-content {
+    grid-area: g-content;
+    overflow-y: auto;
+  }
+  
+  .g-header {
+    grid-area: g-header;
+  }
+  
+  .g-footer {
+    grid-area: g-footer;
+  }
+
+  .g-logo {
+    grid-area: g-logo;
+  }
+  
+  .g-wrapper {
+    display: grid;
+    grid-gap: 2px;
+    grid-template-columns: 1fr 19fr;
+    grid-template-rows: 10vh 73vh 10vh;
+    grid-template-areas:
+      "g-logo g-header"
+      "g-sidebar g-content"
+      "g-footer g-footer";
+    background-color: #fff;
+    color: #444;
+  }
+  
+  .g-box {
+    color: #214262;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 150%;
+    border: 0px #a2a2a2 solid;
+    outline:  auto;
+  }
+  
