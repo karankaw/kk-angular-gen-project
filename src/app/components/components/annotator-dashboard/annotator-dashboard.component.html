@@ -1,0 +1,84 @@
+<!-- <div>
+    <p-accordion [multiple]="false" (onClose)="onTabClose($event)" (onOpen)="onTabOpen($event)">
+        <p-accordionTab *ngFor="let project of projectDetails;index as rowIndex" style="background-color:rgb(37, 165, 189)">
+            <p-header>
+                <span style="line-height: 1.5">{{ project.name }}</span>
+                <span *ngIf="isEnabled[rowIndex]">
+                    <button pButton type="button" icon="pi pi-upload" class="p-button-outlined border p-button-sm" 
+                        style="color: #FFFFFF;" label="Upload Documents" (click)="showUploadDocumentsDialog(project);$event.stopPropagation();">
+                    </button>
+                </span>
+            </p-header>
+            <p-table [value]="project.uploadTaskModels" scrollHeight="40vh" [scrollable]="true"
+                styleClass="p-datatable-sm p-datatable-striped p-datatable-responsive-demo">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Upload ID</th>
+                        <th>Date</th>
+                        <th>Total Documents</th>
+                        <th>Annotated</th>
+                        <th>Action</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-uploadTask>
+                    <tr>
+                        <td>{{uploadTask.id}}</td>
+                        <td>{{uploadTask.created | date:'short' }}</td>
+                        <td>{{uploadTask.totalDocuments}}</td>
+                        <td>{{uploadTask.annotatedDocuments}}</td>
+                        <td>
+                            <button pButton type="button" icon="fa fa-edit" iconPos="left"
+                                class="p-button-outlined"></button>
+                            <button pButton type="button" icon="pi pi-download" iconPos="left"
+                                class="p-button-outlined"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-accordionTab>
+    </p-accordion>
+</div>-->
+
+<app-upload-documents-modal [(modalWindowVisible)]="displayUploadDocuments"
+[(projectId)]="selectedProjectId"></app-upload-documents-modal> 
+
+
+<div>
+    <p-accordion [multiple]="false" (onClose)="onTabClose($event)" (onOpen)="onTabOpen($event)">
+        <p-accordionTab *ngFor="let project of projectDetails; index as rowIndex" style="background-color:rgb(37, 165, 189)">
+            <p-header>
+                <span style="line-height: 1.5">{{project}}</span>
+                <span *ngIf="isEnabled[rowIndex]">
+                    <button pButton type="button" icon="pi pi-upload" class="p-button-outlined border p-button-sm"
+                        style="color: #FFFFFF;" label="Upload Documents" (click)="showUploadDocumentsDialog();$event.stopPropagation();">
+                    </button>
+                </span>
+            </p-header>
+            <p-table [value]="products" [scrollable]="true" scrollHeight="40vh">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Upload ID</th>
+                        <th>Date</th>
+                        <th>Total Documents</th>
+                        <th>Annotated</th>
+                        <th>Action</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowIndex="rowIndex" let-product>
+                    <tr>
+                        <td><a href="#">Upload ID {{rowIndex}}</a></td>
+                        <td>March 9, 2017</td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.category}}</td>
+                        <td>
+                            <button pButton type="button" icon="pi pi-download" iconPos="left"
+                                class="p-button-outlined"></button>
+                            <button pButton type="button" icon="fa fa-edit" iconPos="left"
+                                class="p-button-outlined"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-accordionTab>
+    </p-accordion>
+</div>

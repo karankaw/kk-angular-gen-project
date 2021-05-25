@@ -1,0 +1,13 @@
+<p-toast position="top-right"></p-toast>
+
+<div class="card">
+    <p-fileUpload 
+        #fileUploader name="file[]" customUpload="true"
+        (uploadHandler)="uploadFiles($event)"
+        chooseLabel="Choose File" chooseIcon="" 
+        uploadLabel="Import"  uploadIcon=""
+        cancelLabel="Cancel" cancelIcon="" [showCancelButton]="false"
+        (onRemove)="removeAll()" (onClear)="clearAll()"
+        accept=".json" maxFileSize="1000000">
+    </p-fileUpload>
+</div>

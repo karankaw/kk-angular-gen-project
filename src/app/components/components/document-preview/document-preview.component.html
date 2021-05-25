@@ -1,0 +1,37 @@
+<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu" [ngStyle]="{'position': 'relative', 'top': menuTop,'left': menuLeft}">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+<div class="fixedOuterContainer" #canvas  (mousemove)="customOnMouseMove($event)" (mousedown)="customOnMouseDown($event)" 
+    (mouseup)="customOnMouseUp($event)"
+    style="overflow-x: scroll; overflow-y: scroll; position: absolute !important;; margin-left: 25px;height: 100vh;">
+    <div [hidden]='isTextDocument' id="fixedcontainer" [ngStyle]="{ 'background-image': 'url(data:image/gif;base64,' + url + ')'}" 
+    style="background-position:left;background-repeat: no-repeat;background-size: contain; font-size: 6.5px;" 
+    [style.height.px]='fixedContainerHeight' [style.width.px]='fixedContainerWidth' #fixedContainer>
+        <div [ngStyle]="{backgroundColor: segment.highLightColor!=null && segmentsFontColor=='transparent' ? segment.highLightColor : 'transparent'}" 
+        class="segments" *ngFor="let segment of pageWisePdfSegments;let i=index" 
+        id="segment{{segment.originalSegmentId}}"
+            [style.width.px]="((segment.x2*newxFactor*maxX)-(segment.x1*newxFactor*maxX))"
+            [style.height.px]="((segment.y1*newyFactor*maxY)-(segment.y2*newyFactor*maxY))+3"
+            [style.top.px]="(segment.y2*newyFactor*maxY)"
+            [style.left.px]="(segment.x1*newxFactor*maxX)"
+            style="position: absolute;color: black; white-space: nowrap;" [title]="'x1: '
+                                        +segment.x1+'\n x2:'
+                                        +segment.x2+'\n y1: '
+                                        +segment.y1+'\n y2:'
+                                        +segment.y2+
+                                        '\n segmentvalue:'+segment.value">
+            <span [ngStyle]="{backgroundColor: segment.highLightColor!=null && segmentsFontColor!='transparent' ? segment.highLightColor: segment.isHighlighted ? 'yellow':'transparent','color':segmentsFontColor  }" >
+                {{segment.value}}
+            </span>
+        </div>  
+    </div>
+
+    <div [hidden]='!isTextDocument'>
+        <div>
+            <span [innerText]="textContent">
+            </span>
+        </div>  
+    </div>
+</div>

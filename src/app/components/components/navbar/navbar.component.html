@@ -1,0 +1,19 @@
+<i class="pi pi-align-justify" (mouseover)="visibleSidebar1 = true" style="position:initial"></i>
+<p-sidebar [(visible)]="visibleSidebar1" (mouseleave)="visibleSidebar1 = false" [fullScreen]="false"
+  [baseZIndex]="10000" [style]="{width:'170px',height:'270px', position:'absolute' }">
+  <a href="#" routerLink="" [routerLinkActive]="['active']"><i class="material-icons">home</i>
+    <span class="icon-text" >Home</span></a>
+  <a href="#" [routerLink]="[{outlets:{specialRouterOutlet:['crisis-list'], primary: ['crisis-list']}}]" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><i class="material-icons">monetization_on</i>
+    <span class="icon-text">CrisisC</span></a> <!-- , primary:['dummy-outlet'] -->
+</p-sidebar>
+<!--position:'relative', left:'0' , border: '0', top:'15px', background:'transparent'-->
+
+
+<div id="mySidebar" class="sidebar" (mouseover)="toggleSidebar()" (mouseout)="toggleSidebar()">
+  <a href="#" routerLink="/second/Sonia"><i class="material-icons" routerLink="">info</i><span class="icon-text">First</span></a>
+  <a href="#" [routerLink]="['/second', 'Karan'+'?empID=123&dept=IT']"><i class="material-icons">spa</i><span class="icon-text">Second</span></a>
+</div>
+
+<h5>Overlay</h5>
+<button type="button" pButton pRipple icon="pi pi-bars" label="Show" (click)="menu.toggle($event)"></button>
+<p-menu #menu [popup]="true" [model]="items"></p-menu>
